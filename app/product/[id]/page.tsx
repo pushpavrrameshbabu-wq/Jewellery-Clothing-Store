@@ -1,5 +1,7 @@
 import { products } from "../../data/products";
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: { id: string };
 };
