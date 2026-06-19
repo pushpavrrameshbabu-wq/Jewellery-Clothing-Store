@@ -1,14 +1,20 @@
-"use client";
-
-import { useParams } from "next/navigation";
 import AddToCart from "../../components/AddToCart";
 import { products } from "../../data/products";
 
-export default function ProductByIdClient() {
-  const params = useParams();
-  const id = params?.id as string | undefined;
-  const prod = products.find((p) => p.id === id);
-  if (!prod) return <div className="p-6">Product not found for id: {id}</div>;
+export const dynamic = 'force-dynamic';
+
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
+export default function ProductById({ params }: Props) {
+  const prod = products.find((p) => p.id === params.id);
+  if (!prod) {
+    return <div className="p-6">Product not found for id: {params.id}</div>;
+  }
+
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
