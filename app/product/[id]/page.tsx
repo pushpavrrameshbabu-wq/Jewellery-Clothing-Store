@@ -4,15 +4,16 @@ import { products } from "../../data/products";
 export const dynamic = 'force-dynamic';
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-export default function ProductById({ params }: Props) {
-  const prod = products.find((p) => p.id === params.id);
+export default async function ProductById({ params }: Props) {
+  const { id } = await params;
+  const prod = products.find((p) => p.id === id);
   if (!prod) {
-    return <div className="p-6">Product not found for id: {params.id}</div>;
+    return <div className="p-6">Product not found for id: {id}</div>;
   }
 
   return (
