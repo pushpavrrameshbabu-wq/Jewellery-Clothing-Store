@@ -15,7 +15,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="rounded-lg border p-4 bg-white flex flex-col">
-      <Link href={`/product?id=${product.id}`} className="block w-full h-48 overflow-hidden rounded">
+      <Link href={`/product/${product.id}`} className="block w-full h-48 overflow-hidden rounded">
         <img src={product.image} alt={product.name} className="object-cover w-full h-full" />
       </Link>
       <h3 className="mt-3 text-lg font-medium">{product.name}</h3>
