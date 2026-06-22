@@ -6,6 +6,7 @@ export const products = [
     price: 3999,
     image: "/products/handbags/designer-clutch.jpeg",
     description: "Elegant designer clutch perfect for special occasions.",
+    badge: "Trending",
   },
   {
     id: "saree-001",
@@ -14,6 +15,7 @@ export const products = [
     price: 1299,
     image: "/products/sarees/pink-saree.jpeg",
     description: "Beautiful pink saree.",
+    badge: "Best Seller",
   },
   {
     id: "saree-002",
@@ -22,6 +24,7 @@ export const products = [
     price: 899,
     image: "/products/sarees/red-saree.jpeg",
     description: "Traditional red silk saree.",
+    badge: "New",
   },
   {
     id: "kurti-001",
@@ -30,6 +33,7 @@ export const products = [
     price: 1650,
     image: "/products/kurtis/cotton-kurti1.jpeg",
     description: "Premium cotton kurti.",
+    badge: "Best Seller",
   },
   {
     id: "kurti-002",
@@ -54,6 +58,7 @@ export const products = [
     price: 1349,
     image: "/products/kids/baby-lehanga-gold.jpeg",
     description: "Beautiful baby lehanga.",
+    badge: "New",
   },
   {
     id: "kids-002",
@@ -70,6 +75,7 @@ export const products = [
     price: 1399,
     image: "/products/kids/kids-lehenga1.jpeg",
     description: "Festive kids lehenga.",
+    badge: "Trending",
   },
   {
     id: "jewel-001",
@@ -78,6 +84,7 @@ export const products = [
     price: 899,
     image: "/products/jewellery/diamond-earrings.jpeg",
     description: "Beautiful diamond earrings.",
+    badge: "Best Seller",
   },
   {
     id: "jewel-002",
@@ -86,6 +93,7 @@ export const products = [
     price: 1999,
     image: "/products/jewellery/diamond-necklace.jpeg",
     description: "Elegant diamond necklace.",
+    badge: "Trending",
   },
   {
     id: "jewel-003",
@@ -102,6 +110,7 @@ export const products = [
     price: 1899,
     image: "/products/jewellery/gold-necklace.jpeg",
     description: "Beautiful gold necklace.",
+    badge: "Best Seller",
   },
   {
     id: "jewel-005",
@@ -110,6 +119,7 @@ export const products = [
     price: 999,
     image: "/products/jewellery/gold-peacock-earrings.jpeg",
     description: "Peacock design earrings.",
+    badge: "New",
   },
   {
     id: "jewel-006",

@@ -1,12 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCart } from "../context/CartProvider";
 
 export default function Header() {
   const { totalCount } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Prevent hydration mismatch
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-amber-600/20">
@@ -33,18 +40,14 @@ export default function Header() {
             >
               Home
             </Link>
-            <Link
-              href="/shop"
-              className="text-white hover:text-amber-600 transition text-sm font-light"
-            >
-              Shop
-            </Link>
+
             <Link
               href="/jewellery"
               className="text-white hover:text-amber-600 transition text-sm font-light"
             >
               Jewellery
             </Link>
+
             <Link
               href="/contact"
               className="text-white hover:text-amber-600 transition text-sm font-light"
@@ -66,7 +69,8 @@ export default function Header() {
               className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-amber-600/10 transition relative"
             >
               <span className="text-xl">🛍️</span>
-              {totalCount > 0 && (
+
+              {mounted && totalCount > 0 && (
                 <span className="absolute top-0 right-0 bg-amber-600 text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
                   {totalCount}
                 </span>
@@ -92,18 +96,14 @@ export default function Header() {
             >
               Home
             </Link>
-            <Link
-              href="/shop"
-              className="text-white hover:text-amber-600 transition text-sm font-light"
-            >
-              Shop
-            </Link>
+
             <Link
               href="/jewellery"
               className="text-white hover:text-amber-600 transition text-sm font-light"
             >
               Jewellery
             </Link>
+
             <Link
               href="/contact"
               className="text-white hover:text-amber-600 transition text-sm font-light"

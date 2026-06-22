@@ -9,6 +9,7 @@ type Product = {
   name: string;
   price: number;
   image: string;
+  badge?: string;
 };
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -26,6 +27,13 @@ export default function ProductCard({ product }: { product: Product }) {
   className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-300"
 />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Badge */}
+        {product.badge && (
+          <div className="absolute top-3 right-3 bg-gradient-to-r from-amber-500 to-amber-600 text-black px-3 py-1 rounded-full text-xs font-semibold">
+            {product.badge}
+          </div>
+        )}
       </Link>
 
       {/* Product Info */}

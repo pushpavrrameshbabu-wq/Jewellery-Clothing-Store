@@ -54,7 +54,7 @@ export default async function ProductById({ params }: Props) {
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <a 
               href={`https://wa.me/9490731606?text=${encodeURIComponent(
-  `Hi, I'm interested in ${prod.name} (₹${prod.price})`
+  `Hi, I'm interested in *${prod.name}* (₹${prod.price}).\n\nI found it on your website: Ultimate Collections\n\nPlease let me know more details.`
 )}`}
               target="_blank"
               rel="noopener noreferrer"
