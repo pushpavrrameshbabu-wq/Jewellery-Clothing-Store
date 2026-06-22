@@ -14,6 +14,7 @@ type CartContextValue = {
   items: CartItem[];
   addItem: (item: Omit<CartItem, "quantity">, qty?: number) => void;
   removeItem: (id: string) => void;
+  updateQuantity: (id: string, quantity: number) => void;
   clear: () => void;
   totalCount: number;
   totalPrice: number;
@@ -23,9 +24,11 @@ const CartContext = createContext<CartContextValue | undefined>(undefined);
 
 export function useCart() {
   const ctx = useContext(CartContext);
+
   if (!ctx) {
     throw new Error("useCart must be used within CartProvider");
   }
+
   return ctx;
 }
 
@@ -34,21 +37,19 @@ export function CartProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    if (typeof window === "undefined") {
+      return [];
+    }
 
-  // Load cart after component mounts (prevents hydration mismatch)
-  useEffect(() => {
     try {
       const raw = localStorage.getItem("cart:v1");
-      if (raw) {
-        setItems(JSON.parse(raw));
-      }
-    } catch (error) {
-      console.error("Failed to load cart:", error);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
     }
-  }, []);
+  });
 
-  // Save cart whenever items change
   useEffect(() => {
     try {
       localStorage.setItem("cart:v1", JSON.stringify(items));
@@ -57,14 +58,22 @@ export function CartProvider({
     }
   }, [items]);
 
-  const addItem = (item: Omit<CartItem, "quantity">, qty = 1) => {
+  const addItem = (
+    item: Omit<CartItem, "quantity">,
+    qty = 1
+  ) => {
     setItems((prev) => {
-      const existing = prev.find((p) => p.id === item.id);
+      const existing = prev.find(
+        (p) => p.id === item.id
+      );
 
       if (existing) {
         return prev.map((p) =>
           p.id === item.id
-            ? { ...p, quantity: p.quantity + qty }
+            ? {
+                ...p,
+                quantity: p.quantity + qty,
+              }
             : p
         );
       }
@@ -74,7 +83,27 @@ export function CartProvider({
   };
 
   const removeItem = (id: string) => {
-    setItems((prev) => prev.filter((p) => p.id !== id));
+    setItems((prev) =>
+      prev.filter((p) => p.id !== id)
+    );
+  };
+
+  const updateQuantity = (
+    id: string,
+    quantity: number
+  ) => {
+    if (quantity <= 0) {
+      removeItem(id);
+      return;
+    }
+
+    setItems((prev) =>
+      prev.map((p) =>
+        p.id === id
+          ? { ...p, quantity }
+          : p
+      )
+    );
   };
 
   const clear = () => {
@@ -97,6 +126,7 @@ export function CartProvider({
         items,
         addItem,
         removeItem,
+        updateQuantity,
         clear,
         totalCount,
         totalPrice,
