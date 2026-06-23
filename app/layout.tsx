@@ -38,38 +38,28 @@ export const metadata: Metadata = {
   ],
 
   metadataBase: new URL(
-    "https://jewellery-clothing-store-2gop24zdn.vercel.app"
+    "https://jewellery-clothing-store.vercel.app"
   ),
 
   icons: {
-    icon: [
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-      {
-        url: "/favicon.ico",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: "/icon.svg",
   },
 
   openGraph: {
     title: "Ultimate Collections - Premium Jewellery & Fashion",
     description:
-      "Discover our premium collection of handcrafted jewellery and exquisite fashion wear for every occasion.",
-    url: "https://jewellery-clothing-store-2gop24zdn.vercel.app",
+      "Discover premium jewellery, sarees, handbags, kurtis and fashion collections for every occasion.",
+    url: "https://jewellery-clothing-store.vercel.app",
     siteName: "Ultimate Collections",
-    type: "website",
     locale: "en_IN",
+    type: "website",
 
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "/og-image.jpeg",
         width: 1200,
         height: 630,
         alt: "Ultimate Collections - Premium Jewellery & Fashion",
-        type: "image/png",
       },
     ],
   },
@@ -77,8 +67,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Ultimate Collections",
-    description: "Premium handcrafted jewellery and fashion wear",
-    images: ["/twitter-image.png"],
+    description:
+      "Premium handcrafted jewellery, sarees, handbags, kurtis and fashion wear.",
+    images: ["/og-image.jpeg"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
