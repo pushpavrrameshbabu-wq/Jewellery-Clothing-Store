@@ -1,45 +1,56 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Jewellery-Clothing-Store
-Ultimate Collections - Production E-Commerce Platform
-=======
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-=======
-# Ultimate Collections - Jewellery & Clothing Store
->>>>>>> 7227888 (docs: add professional project README)
+```markdown
+# Ultimate Collections – Production E-Commerce Platform
 
-A modern e-commerce storefront built with Next.js, TypeScript and Tailwind CSS.
+A full-stack, production-ready e-commerce application for showcasing jewellery and clothing products. The project is built with **Next.js**, **TypeScript**, **Tailwind CSS**, **PostgreSQL (Neon)**, and deployed on **Vercel**. It demonstrates modern web development practices, database integration, authentication, and deployment workflows.
+
+---
 
 ## Live Demo
 
+**Application**
+
 https://jewellery-clothing-store.vercel.app
 
----
+**Source Code**
 
-## Project Overview
-
-Ultimate Collections is a responsive jewellery and clothing showcase website designed for online product discovery and customer engagement.
-
-The application includes product browsing, category filtering, WhatsApp ordering, product detail pages, testimonials, branding, SEO optimization and deployment on Vercel.
+https://github.com/prasadpj509/Jewellery-Clothing-Store
 
 ---
 
-## Features Implemented
+# Project Overview
 
-### Product Catalog
+Ultimate Collections is designed as a scalable e-commerce platform that allows customers to browse products while providing administrators with tools to manage inventory through a PostgreSQL-backed dashboard.
 
-- Jewellery Collection
-- Sarees Collection
-- Kurtis Collection
-- Handbags Collection
-- Kids Wear Collection
+The project focuses on:
 
-### Product Search
+- Modern Next.js App Router architecture
+- PostgreSQL database integration
+- REST API development
+- Admin product management
+- Audit logging
+- Responsive UI
+- Production deployment
+- Secure environment configuration
 
-- Search products by name
-- Instant filtering
+---
 
-### Category Filtering
+# Features
+
+## Customer Features
+
+- Browse jewellery and clothing collections
+- Product search and filtering
+- Dynamic product detail pages
+- Shopping cart
+- Checkout workflow
+- WhatsApp ordering
+- Instagram integration
+- Testimonials
+- Responsive mobile-first design
+
+---
+
+## Product Categories
 
 - Jewellery
 - Sarees
@@ -47,147 +58,242 @@ The application includes product browsing, category filtering, WhatsApp ordering
 - Handbags
 - Kids Wear
 
-### Product Details Page
+---
 
-- Dynamic routing using Next.js
-- Individual product information
-- Product images
-- WhatsApp order button
+## Admin Features
 
-### Shopping Features
-
-- Add to Cart
-- Cart View
-- Checkout Page
-
-### Customer Engagement
-
-- WhatsApp Floating Button
-- Instagram Floating Button
-- Testimonials Section
-- Shop By Category Section
-
-### Branding
-
-- Custom Logo
-- Custom Favicon
-- Open Graph Images
-- Twitter Card Images
-
-### Music Integration
-
-- Spotify Playlist Embed
-
-### SEO Features
-
-- Metadata Configuration
-- Sitemap Generation
-- Open Graph Tags
-- Twitter Meta Tags
-
-### Responsive Design
-
-- Mobile Friendly
-- Tablet Friendly
-- Desktop Optimized
+- Secure admin dashboard
+- Product CRUD operations
+- PostgreSQL-backed inventory
+- Audit logging
+- Database health monitoring
 
 ---
 
-## Tech Stack
+## Audit Logging
 
-### Frontend
+Every administrative action is recorded, including:
+
+- Product creation
+- Product updates
+- Product deletion
+- Administrative operations
+
+Each log stores:
+
+- Action
+- Product ID
+- Administrator
+- Timestamp
+- Payload
+- IP Address
+
+---
+
+# Technology Stack
+
+## Frontend
 
 - Next.js 16
 - React
 - TypeScript
 - Tailwind CSS
 
-### Deployment
+## Backend
+
+- Next.js Route Handlers
+- PostgreSQL
+- Neon Database
+
+## Authentication
+
+- NextAuth.js
+
+## Deployment
 
 - Vercel
 
-### Version Control
+## Development Tools
 
 - Git
 - GitHub
+- VS Code
+- WSL (Ubuntu)
 
 ---
 
-## Project Structure
+# Project Architecture
 
-```bash
-app/
-├── components/
-│   ├── Header.tsx
-│   ├── Hero.tsx
-│   ├── ProductCard.tsx
-│   ├── ShopByCategory.tsx
-│   ├── Testimonials.tsx
-│   ├── SpotifySection.tsx
-│   ├── FloatingWhatsApp.tsx
-│   ├── FloatingInstagram.tsx
-│   └── WhyChooseUs.tsx
+```
+
+Browser
 │
-├── contact/
-├── cart/
-├── checkout/
-├── product/[id]/
+▼
+Next.js Application
 │
-├── sitemap.ts
-├── layout.tsx
-└── page.tsx
+▼
+Route Handlers (API)
+│
+▼
+Neon PostgreSQL
+│
+▼
+Vercel Deployment
 
-src/
-└── lib/
-    └── products.ts
-
-public/
-└── products/
 ```
 
 ---
 
-## DevOps & Deployment Skills Demonstrated
+# API Endpoints
 
-- Git Version Control
-- GitHub Repository Management
-- Vercel Deployment
-- Production Builds
-- Next.js Optimization
-- Static Asset Management
-- SEO Configuration
-- Troubleshooting Build Errors
-- Linux (WSL) Development Environment
+## Products
+
+```
+
+GET /api/products
+
+```
+
+Supports:
+
+- Product listing
+- Product lookup
+- Filtering
+- Database retrieval
 
 ---
 
-## Local Setup
+## Admin Audit
 
-Clone Repository
-
-```bash
-git clone <repo-url>
 ```
 
-Install Dependencies
+GET /api/admin/audit
+
+```
+
+Supports:
+
+- Audit history
+- Pagination
+- Filtering
+
+---
+
+## Authentication
+
+```
+
+/api/auth/[...nextauth]
+
+```
+
+Provides administrator authentication.
+
+---
+
+## Database Health
+
+```
+
+GET /api/db-test
+
+````
+
+Verifies PostgreSQL connectivity.
+
+---
+
+# Database Schema
+
+## products
+
+Stores:
+
+- Product Name
+- Category
+- Price
+- Description
+- Images
+
+---
+
+## admin_audit
+
+Stores:
+
+- Administrator
+- Action
+- Product ID
+- Payload
+- IP Address
+- Timestamp
+
+---
+
+# Getting Started
+
+## Clone Repository
+
+```bash
+git clone https://github.com/prasadpj509/Jewellery-Clothing-Store.git
+
+cd Jewellery-Clothing-Store
+````
+
+---
+
+## Install Dependencies
 
 ```bash
 npm install
 ```
 
-Run Development Server
+---
+
+## Configure Environment Variables
+
+Create a `.env.local` file:
+
+```env
+DATABASE_URL=
+
+NEXTAUTH_SECRET=
+
+ADMIN_USER=
+ADMIN_PASS=
+
+CONTACT_WHATSAPP=
+INSTAGRAM_HANDLE=
+
+NEXT_PUBLIC_CONTACT_WHATSAPP=
+NEXT_PUBLIC_INSTAGRAM_HANDLE=
+```
+
+---
+
+## Run Development Server
 
 ```bash
 npm run dev
 ```
 
-Build Production Version
+Application runs at:
+
+```
+http://localhost:3000
+```
+
+---
+
+## Production Build
 
 ```bash
 npm run build
 ```
 
-Start Production Server
+---
+
+## Start Production Server
 
 ```bash
 npm start
@@ -195,40 +301,115 @@ npm start
 
 ---
 
-## Deployment
+# Deployment
 
-Application is deployed using Vercel.
+The application is deployed on **Vercel** with:
 
-Production URL:
-
-https://jewellery-clothing-store.vercel.app
-
-<<<<<<< HEAD
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
->>>>>>> d63aa99 (Initial commit from Create Next App)
-=======
----
-
-## Future Improvements
-
-- Payment Gateway Integration
-- Admin Dashboard
-- Inventory Management
-- Order Tracking
-- Customer Login
-- Product Reviews
-- Wishlist Feature
-- Email Notifications
-- Analytics Dashboard
+* Automatic deployments from GitHub
+* Environment variable management
+* PostgreSQL hosted on Neon
+* Production build validation
 
 ---
 
-## Author
+# DevOps Skills Demonstrated
 
-Durga Prasad P J
+## Version Control
 
-DevOps Engineer | AWS | Docker | Kubernetes | Terraform | CI/CD
+* Git
+* GitHub
+* Feature Branch Workflow
+* Pull Requests
 
-GitHub:
+## Cloud
+
+* Vercel
+* Neon PostgreSQL
+
+## Databases
+
+* PostgreSQL
+* SQL
+* Connection troubleshooting
+* CRUD operations
+
+## Application Deployment
+
+* Production builds
+* Environment configuration
+* Runtime validation
+* Deployment verification
+
+## Linux
+
+* Ubuntu (WSL)
+* Process management
+* Networking
+* Shell scripting
+
+## Troubleshooting
+
+Resolved issues involving:
+
+* PostgreSQL connectivity
+* Environment variables
+* Build failures
+* Next.js routing
+* Vercel deployment
+* Runtime debugging
+
+---
+
+# Future Enhancements
+
+* Payment Gateway Integration
+* Razorpay
+* Order Management
+* Inventory Management
+* Customer Accounts
+* Wishlist
+* Product Reviews
+* Email Notifications
+* Analytics Dashboard
+* Role-Based Access Control
+
+---
+
+# Author
+
+**Durga Prasad P. J.**
+
+DevOps Engineer | Cloud & Full Stack Developer
+
+## Skills
+
+* AWS
+* Docker
+* Kubernetes
+* Terraform
+* Jenkins
+* GitHub Actions
+* Linux
+* PostgreSQL
+* Next.js
+* TypeScript
+* Vercel
+
+GitHub
+
 https://github.com/prasadpj509
->>>>>>> 7227888 (docs: add professional project README)
+
+LinkedIn
+
+(Add your LinkedIn profile)
+
+---
+
+# Project Status
+
+**Production Ready**
+
+Successfully deployed on **Vercel** with **Neon PostgreSQL** backend, featuring dynamic APIs, secure administration, responsive UI, and production-grade deployment.
+
+```
+```
