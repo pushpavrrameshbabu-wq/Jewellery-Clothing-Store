@@ -12,7 +12,15 @@ type Product = {
   badge?: string;
 };
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({
+  product,
+  whatsappNumber,
+  instagramHandle,
+}: {
+  product: Product;
+  whatsappNumber?: string;
+  instagramHandle?: string;
+}) {
   const { addItem } = useCart();
 
   return (
@@ -72,6 +80,29 @@ export default function ProductCard({ product }: { product: Product }) {
           >
             View Details
           </Link>
+          {/* Ordering via WhatsApp / Instagram - values passed from server page */}
+          {whatsappNumber && (
+            <a
+              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                `Hi, I'm interested in ${product.name} (ID: ${product.id}). Please share details.`
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="block w-full text-center px-4 py-3 md:py-2 border border-amber-600/30 text-black bg-amber-100 rounded-lg hover:bg-amber-200 transition-colors text-sm"
+            >
+              Order via WhatsApp
+            </a>
+          )}
+          {instagramHandle && (
+            <a
+              href={`https://instagram.com/${instagramHandle}`}
+              target="_blank"
+              rel="noreferrer"
+              className="block w-full text-center px-4 py-3 md:py-2 border border-amber-600/30 text-white bg-gradient-to-r from-pink-500 to-pink-400 rounded-lg hover:opacity-90 transition-colors text-sm"
+            >
+              Message on Instagram
+            </a>
+          )}
         </div>
       </div>
     </div>
