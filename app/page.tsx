@@ -33,7 +33,7 @@ export default function Home() {
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 py-12 md:py-20">
         {/* Collections */}
-        <section className="mb-20">
+        <section id="collections" className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-4 tracking-tight">
               Our Collections

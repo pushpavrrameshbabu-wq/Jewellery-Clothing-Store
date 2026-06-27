@@ -1,6 +1,27 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
+
 export default function Hero() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleExplore = () => {
+    if (pathname === "/") {
+      const el = document.getElementById("collections");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+    }
+
+    router.push("/products");
+  };
+
+  const handleLearnMore = () => {
+    router.push("/contact");
+  };
+
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-amber-950/5 to-black">
       {/* Background Image Overlay */}
@@ -27,7 +48,7 @@ export default function Hero() {
         {/* Featured Badge */}
         <div className="mb-6 inline-block">
           <span className="px-6 py-2 border border-amber-500/50 rounded-full text-sm text-amber-500 font-light tracking-widest">
-            ✦ NEW COLLECTION 2025
+            ✦ NEW COLLECTION 2026
           </span>
         </div>
 
@@ -48,10 +69,10 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <button className="px-8 py-3 bg-gradient-to-r from-amber-600 to-amber-500 text-black font-semibold rounded-full hover:from-amber-500 hover:to-amber-400 transition-all duration-300 shadow-lg hover:shadow-amber-600/50 hover:shadow-2xl">
+          <button onClick={handleExplore} className="px-8 py-3 bg-gradient-to-r from-amber-600 to-amber-500 text-black font-semibold rounded-full hover:from-amber-500 hover:to-amber-400 transition-all duration-300 shadow-lg hover:shadow-amber-600/50 hover:shadow-2xl">
             Explore Collection
           </button>
-          <button className="px-8 py-3 border border-amber-600 text-amber-600 font-semibold rounded-full hover:bg-amber-600/10 transition-all duration-300">
+          <button onClick={handleLearnMore} className="px-8 py-3 border border-amber-600 text-amber-600 font-semibold rounded-full hover:bg-amber-600/10 transition-all duration-300">
             Learn More
           </button>
         </div>

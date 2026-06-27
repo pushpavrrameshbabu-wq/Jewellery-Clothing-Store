@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useCart } from "../context/CartProvider";
 
 export default function Header() {
   const { totalCount } = useCart();
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Prevent hydration mismatch
@@ -59,7 +61,7 @@ export default function Header() {
           {/* Right Icons */}
           <div className="flex items-center gap-4">
             {/* Wishlist */}
-            <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-amber-600/10 transition">
+            <button onClick={() => router.push("/products")} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-amber-600/10 transition">
               <span className="text-xl">♡</span>
             </button>
 
